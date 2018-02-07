@@ -1,0 +1,80 @@
+[ ca ]
+default_ca			= CA_default
+
+[ CA_default ]
+dir				= .
+certs				= $dir/
+database			= $dir/db/index.txt
+new_certs_dir			= $dir/certs
+certificate			= $dir/ca.pem
+serial				= $dir/db/ca.srl
+private_key			= $dir/ca.key
+RANDFILE			= $dir/.rand
+name_opt			= ca_default
+cert_opt			= ca_default
+default_days			= 365
+default_crl_days		= 90
+default_md			= sha512
+preserve			= no
+policy				= policy_loose
+copy_extensions			= copy
+
+[ policy_loose ]
+countryName			= optional
+stateOrProvinceName		= optional
+localityName			= optional
+organizationName		= optional
+organizationalUnitName		= optional
+commonName			= supplied
+emailAddress			= optional
+
+[ req ]
+distinguished_name		= req_dn
+default_bits			= 4096
+default_md			= sha512
+req_extensions			= v3_req
+
+[ req_dn ]
+# See <https://en.wikipedia.org/wiki/Certificate_signing_request>.
+countryName                     = Country Name (2 letter code)
+countryName_min			= 2
+countryName_max			= 2
+stateOrProvinceName             = State or Province Name
+localityName                    = Locality Name
+0.organizationName              = Organization Name
+organizationalUnitName          = Organizational Unit Name
+commonName                      = Common Name
+emailAddress                    = Email Address
+emailAddress_max		= 40
+commanName_max			= 64
+
+countryName_default		= AT
+stateOrProvinceName_default	= Vienna
+localityName_default		= Vienna
+0.organizationName_default	= TU Wien
+organizationalUnitName_default	= IoT 17/18
+
+[ v3_ca ]
+subjectKeyIdentifier		= hash
+authorityKeyIdentifier		= keyid:always,issuer:always
+keyUsage			= critical,keyCertSign,cRLSign
+basicConstraints		= critical,CA:true
+
+[ v3_req ]
+subjectKeyIdentifier		= hash
+basicConstraints		= critical,CA:false
+
+[ dashboard_ext ]
+subjectKeyIdentifier		= hash
+basicConstraints		= critical,CA:false
+nsCertType			= client
+
+[ coordinator_ext ]
+subjectKeyIdentifier		= hash
+basicConstraints		= critical,CA:false
+nsCertType			= client
+
+[ broker_ext ]
+subjectKeyIdentifier		= hash
+basicConstraints		= critical,CA:false
+nsCertType			= server

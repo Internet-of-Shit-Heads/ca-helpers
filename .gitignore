@@ -1,0 +1,7 @@
+/certs
+/db
+*.key
+*.csr
+*.crt
+*.der
+/ca.pem

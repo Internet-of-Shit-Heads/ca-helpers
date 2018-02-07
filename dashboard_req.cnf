@@ -1,0 +1,25 @@
+[ dashboard_dn ]
+countryName                     = Country Name (2 letter code)
+countryName_min			= 2
+countryName_max			= 2
+stateOrProvinceName             = State or Province Name
+localityName                    = Locality Name
+0.organizationName              = Organization Name
+organizationalUnitName          = Organizational Unit Name
+commonName                      = Common Name
+commanName_max			= 64
+
+countryName_default		= AT
+stateOrProvinceName_default	= Vienna
+localityName_default		= Vienna
+0.organizationName_default	= TU Wien
+organizationalUnitName_default	= IoT 17/18
+
+[ dashboard_ext ]
+nsCertType			= client
+
+[ req ]
+distinguished_name		= dashboard_dn
+req_extensions			= dashboard_ext
+default_bits			= 4096
+default_md			= sha512
