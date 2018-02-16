@@ -1,7 +1,7 @@
 ca.key ca.pem: ca.cnf
 	openssl req -newkey rsa:4096 -sha512 -config ca.cnf -extensions v3_ca -keyout ca.key -out ca.pem -x509
 
-.capair: ca.key/4096 ca.pem
+.capair: ca.key/2048 ca.pem
 
 db/index.txt:
 	mkdir -p db

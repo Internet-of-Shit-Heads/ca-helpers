@@ -30,7 +30,7 @@ emailAddress			= optional
 
 [ req ]
 distinguished_name		= req_dn
-default_bits			= 4096
+default_bits			= 2048
 default_md			= sha512
 req_extensions			= v3_req
 
