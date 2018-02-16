@@ -29,9 +29,13 @@ ca: .capair .cadb
 %.der: %.pem
 	openssl x509 -in $< -outform DER -out $@
 
-KEYSIZE=4096
+KEYSIZE=2048
 %.key:
 	openssl genrsa -out $@ $(KEYSIZE)
+
+%.key/1536: KEYSIZE=1536
+%.key/1536: %.key
+	@echo -n
 
 %.key/2048: KEYSIZE=2048
 %.key/2048: %.key
@@ -48,7 +52,7 @@ KEYSIZE=4096
 
 %/coordinator: CERT_EXTENSION=coordinator_ext
 %/coordinator: REQUEST_CONFIG=coordinator_req.cnf
-%/coordinator: KEYSIZE=2048
+%/coordinator: KEYSIZE=1536
 %/coordinator: %
 	@echo -n
 

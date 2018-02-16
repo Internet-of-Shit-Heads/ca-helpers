@@ -25,5 +25,5 @@ subjectAltName			= @broker_an
 [ req ]
 distinguished_name		= broker_dn
 req_extensions			= broker_ext
-default_bits			= 4096
+default_bits			= 2048
 default_md			= sha512

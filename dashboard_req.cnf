@@ -21,5 +21,5 @@ nsCertType			= client
 [ req ]
 distinguished_name		= dashboard_dn
 req_extensions			= dashboard_ext
-default_bits			= 4096
+default_bits			= 2048
 default_md			= sha512
